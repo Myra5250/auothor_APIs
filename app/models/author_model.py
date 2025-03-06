@@ -8,12 +8,12 @@ class Author(db.Model):
         first_name = db.Column(db.String(20), nullable = False)
         last_name = db.Column(db.String(20), nullable = False)
         password = db.Column(db.String(8), nullable = False)
-        image = db.Column(db.String(255), nullable = False)
-        email = db.Column(db.String(30), nullable = False, unique = False )
-        contact = db.Column(db.Integer(10), nullable = False, unique = False)
+        image = db.Column(db.String(255), nullable = True)
+        email = db.Column(db.String(30), nullable = False, unique = True)
+        contact = db.Column(db.Integer, nullable = False, unique = True)
         bio = db.Column(db.String(100), nullable = False)
-        created_at = db.Column(db.Datetime, default=datetime.now())
-        updated_at = db.Column (db.Datetime, on_update=datetime.now())
+        created_at = db.Column(db.DateTime, default=datetime.now())
+        updated_at = db.Column (db.DateTime, onupdate=datetime.now())
         
         def __init__(self, id, first_name, last_name, password, image, email, contact, bio, created_at, updated_at):
           self.id = id
